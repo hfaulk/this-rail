@@ -1,0 +1,27 @@
+{
+  "name": "this-rail",
+  "version": "1.0.0",
+  "description": "A web-app for trainspotters to keep track of units they have spotted, along with any photos they may have taken of each spot.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hfaulk/this-rail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hfaulk/this-rail/issues"
+  },
+  "homepage": "https://github.com/hfaulk/this-rail#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.99.1",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}
