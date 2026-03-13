@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Next Rail | Log In</title>
+		<title>This Rail | Log In</title>
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
 		<article id="panel">
-			<h1>Log In</h1>
+			<header id="panel-head">
+				<h1>Log in</h1>
+				<p>Welcome back to This Rail</p>
+			</header>
 			<section id="log-in">
 				<form method="post" id="login">
 					<section class="form-row">
-						<input type="text" name="email" id="email" placeholder="Email Address" required />
+						<label for="email">Email address</label>
+						<input type="email" name="email" id="email" placeholder="you@example.com" required />
 					</section>
 					<section class="form-row">
+						<label for="password">Password</label>
 						<input type="password" name="password" id="password" placeholder="Password" required />
 					</section>
-					<section class="form-row">
-						<input type="submit" value="Log In" />
-					</section>
+					<input type="submit" id="submit" value="Log In" />
 				</form>
 			</section>
 		</article>

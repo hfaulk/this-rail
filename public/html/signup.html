@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Next Rail | Sign Up</title>
+		<title>This Rail | Sign Up</title>
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
 		<article id="panel">
-			<h1>Sign Up</h1>
+			<header id="panel-head">
+				<h1>Create account</h1>
+				<p>Spot to your heart's content with This Rail</p>
+			</header>
 			<section id="sign-up">
-				<form method="post" id="signup">
+				<form method="post" action="/signup" id="signup">
 					<section class="form-row">
-						<input type="text" name="email" id="email" placeholder="Email Address" required />
+						<label for="email">Email address</label>
+						<input type="email" name="email" id="email" placeholder="you@example.com" required />
 					</section>
 					<section class="form-row">
-						<input type="text" name"username" id="username" placeholder="Username" required />
+						<label for="username">Username</label>
+						<input type="text" name="username" id="username" placeholder="What's your username?" required />
+					</section>
+					<section class="form-row-split">
+						<section class="form-row">
+							<label for="first-name">First name</label>
+							<input type="text" name="first-name" id="first-name" placeholder="Jane" required />
+						</section>
+						<section class="form-row">
+							<label for="last-name">Surname</label>
+							<input type="text" name="last-name" id="last-name" placeholder="Smith" required />
+						</section>
 					</section>
 					<section class="form-row">
-						<input type="text" name="first-name" id="first-name" placeholder="First Name" required />
-					</section>
-					<section class="form-row">
-						<input type="text" name="last-name" id="last-name" placeholder="Surname" required />
-					</section>
-
-					<section class="form-row">
+						<label for="password">Password</label>
 						<input type="password" name="password" id="password" placeholder="Password" required />
 					</section>
-					<section class="form-row">
-						<input type="submit" value="Sign Up" />
-					</section>
+					<input type="submit" id="submit" value="Sign Up" />
 				</form>
 			</section>
 		</article>
