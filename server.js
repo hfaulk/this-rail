@@ -2,20 +2,17 @@ import express from "express";
 import "dotenv/config";
 import path from "path";
 import { fileURLToPath } from "url";
+import { supabase } from "./lib/supabaseClient.js"
 
-// Needed to get filepaths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Getting port from .env
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-// Middleware
-app.use(express.json()); // Allows the server to read JSON sent from your browser
-app.use(express.urlencoded({ extended: true })); // Allows server to read form data
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // --- ROUTES ---
@@ -29,6 +26,27 @@ app.get("/login", (req, res) => {
 
 app.get("/signup", (req,res) => {
 	res.sendFile("signup.html", { root: path.join(__dirname, "public/html") });
+});
+
+app.post("/signup", async (req,res) => {	
+	const {data: data1, error: error1} = await supabase.auth.signUp({ email: req.body.email, password: req.body.password });
+	
+	if (!error1){
+		const {data: data2, error: error2} = await supabase.from("users").insert({
+				user_id: data1.user.id,
+				username: req.body.username,
+				user_first_name: req.body["first-name"],
+				user_surname: req.body["last-name"]}
+		);
+
+		if (!error1 && !error2) {
+			res.json({data1: data1, data2: data2});
+		} else{
+			res.status(400).json({error1: error1, error2: error2});
+		};
+	} else{
+		res.status(400).json(error1);
+	}
 });
 
 app.listen(PORT, () => console.log("Running on http://localhost:3000"));
