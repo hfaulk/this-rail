@@ -30,7 +30,8 @@ app.get("/signup", (req,res) => {
 
 app.post("/signup", async (req,res) => {	
 	const {data: data1, error: error1} = await supabase.auth.signUp({ email: req.body.email, password: req.body.password });
-	
+	console.log(error1);
+
 	if (!error1){
 		const {data: data2, error: error2} = await supabase.from("users").insert({
 				user_id: data1.user.id,
@@ -38,6 +39,8 @@ app.post("/signup", async (req,res) => {
 				user_first_name: req.body["first-name"],
 				user_surname: req.body["last-name"]}
 		);
+
+		console.log(error2);
 
 		if (!error1 && !error2) {
 			res.json({data1: data1, data2: data2});
